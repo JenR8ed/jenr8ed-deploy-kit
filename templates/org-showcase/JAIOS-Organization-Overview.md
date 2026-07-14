@@ -1,50 +1,67 @@
 # JAIOS Organization Showcase
 
-**JenR8ed • Agentic AI & Automation**
+**JenR8ed • Building Professional Agentic AI Systems**
 
-> Building the future of agentic systems, AI tooling, and professional open-source infrastructure.
+> Turning ideas into production-grade agentic infrastructure, automation tooling, and beautiful developer experiences.
 
 ## 🌟 Featured Projects
 
-### Core JAIOS Platform
-- **[AI-Agentic-Terminal-Portfolio](https://github.com/JenR8ed/AI-Agentic-Terminal-Portfolio)** — The flagship agentic AI terminal and portfolio experience.
-- **[jaios-agentic-core](https://github.com/JenR8ed/jaios-agentic-core)** — Core agentic architecture and MCP system.
+### Core Platform
+- **[AI-Agentic-Terminal-Portfolio](https://github.com/JenR8ed/AI-Agentic-Terminal-Portfolio)** — Flagship agentic AI terminal experience and portfolio.
+- **[jaios-agentic-core](https://github.com/JenR8ed/jaios-agentic-core)** — Core agentic architecture, MCP tooling, and reasoning engine.
 
-### Supporting Infrastructure
-- **jenr8ed-deploy-kit** — Universal deployment, Notion sync, and standardization toolkit.
-- **jenr8ed-live-ui** — Official landing page and UI for jenr8ed.live (Cloudflare Pages).
-- **jaios-portfolio** & **jaios-notion-gateway** — Specialized modules for portfolio and Notion integration.
+### Infrastructure & Tooling
+- **[jenr8ed-deploy-kit](https://github.com/JenR8ed/jenr8ed-deploy-kit)** — Universal deployment workflows, Notion integration, and standardization toolkit.
+- **[jenr8ed-live-ui](https://github.com/JenR8ed/jenr8ed-live-ui)** — Official Cloudflare Pages UI for [jenr8ed.live](https://jenr8ed.live).
+- **[jaios-portfolio](https://github.com/JenR8ed/jaios-portfolio)** & **[jaios-notion-gateway](https://github.com/JenR8ed/jaios-notion-gateway)** — Specialized modules.
 
-## 🛠️ Technology Stack
+## 🛠️ Technology & Infrastructure
 
-- **Frontend**: React / Vite / TypeScript
-- **Backend & Agents**: Python, Flask, agentic workflows
-- **Hosting**: Vercel + Cloudflare Pages (hybrid)
-- **DNS & Edge**: Cloudflare
-- **Short Links**: Dub.co
-- **Automation**: GitHub Actions + jenr8ed-deploy-kit
-- **Documentation & State**: Notion (JAIOS Command Center)
+| Layer              | Tools & Platforms                     |
+|--------------------|---------------------------------------|
+| Frontend           | React, Vite, TypeScript              |
+| Agentic Core       | Python, agent workflows, MCP         |
+| Hosting            | Vercel + Cloudflare Pages (hybrid)   |
+| DNS & Edge         | Cloudflare                           |
+| Short Links        | Dub.co                               |
+| Automation         | GitHub Actions + jenr8ed-deploy-kit  |
+| State & Docs       | Notion (JAIOS Command Center)        |
 
-## 📍 Live Links
+## 📍 Live Destinations
 
 - **Website**: [jenr8ed.live](https://jenr8ed.live)
-- **App**: [app.jenr8ed.live](https://app.jenr8ed.live) *(coming soon)*
-- **GitHub**: [github.com/JenR8ed](https://github.com/JenR8ed)
+- **Main App**: [app.jenr8ed.live](https://app.jenr8ed.live) *(in development)*
+- **GitHub Organization**: [github.com/JenR8ed](https://github.com/JenR8ed)
 
-## 🔄 How We Stay in Sync
+## 💎 Sponsorship Tiers
 
-All projects follow the **Universal JAIOS Update Protocol** defined in `jenr8ed-deploy-kit`:
-- Standardized GitHub Actions workflows
-- Automated deployments (Vercel / Cloudflare Pages)
-- Notion Command Center for real-time status
-- Consistent documentation and branding
+Support the continued development of open agentic AI tooling:
+
+| Tier          | Benefits                                      | Ideal For                  |
+|---------------|-----------------------------------------------|----------------------------|
+| **Supporter** | Early access + public thanks                  | Individuals                |
+| **Builder**   | Priority feature requests + private updates   | Indie hackers & makers     |
+| **Partner**   | Co-branded showcases + direct collaboration   | Companies & teams          |
+
+**Links**: [GitHub Sponsors](https://github.com/sponsors/JenR8ed) • Open Collective *(coming soon)*
+
+## 🔄 How Everything Stays in Sync
+
+All projects follow the **Universal JAIOS Update Protocol**:
+- Standardized GitHub Actions (Vercel / Cloudflare Pages)
+- Automated deployments + preview environments
+- Real-time status in the Notion JAIOS Command Center
+- Consistent documentation via this deploy-kit
 
 ## 🚀 Get Involved
 
-- Star our repositories
-- Follow development in the [JAIOS Command Center](https://www.notion.so/...) *(link to be added)*
-- Sponsor via GitHub Sponsors or Open Collective
+- ⭐ Star the repositories you find useful
+- Follow development in the [JAIOS Command Center](https://www.notion.so)
+- Sponsor ongoing work via GitHub Sponsors
+- Reach out for collaboration or custom agentic tooling
 
 ---
 
-*This overview is maintained as part of the jenr8ed-deploy-kit for consistent showcasing across the organization.*
+*Maintained as part of `jenr8ed-deploy-kit` for consistent, professional showcasing across the JenR8ed organization.*
+
+**Last updated**: 2026-07-14

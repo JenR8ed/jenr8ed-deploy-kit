@@ -1,0 +1,105 @@
+name: Universal JAIOS Deploy
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quality:
+    name: Quality Gates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint --if-present
+
+      - name: Type Check
+        run: npm run type-check --if-present || npx tsc --noEmit
+
+      - name: Test
+        run: npm test --if-present
+
+  deploy:
+    name: Deploy to Platform
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      # ============================================
+      # VERCEL DEPLOYMENT (Primary for JAIOS dynamic apps)
+      # ============================================
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Deploy to Vercel (Production)
+        run: |
+          vercel deploy --prod --yes \
+            --token=${{ secrets.VERCEL_TOKEN }} \
+            --scope=${{ secrets.VERCEL_ORG_ID || '' }}
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+
+      # ============================================
+      # OPTIONAL: CLOUDFLARE PAGES (for static UI)
+      # ============================================
+      # Uncomment if this repo deploys to Cloudflare Pages
+      # - name: Deploy to Cloudflare Pages
+      #   uses: cloudflare/wrangler-action@v3
+      #   with:
+      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      #     command: pages deploy ./dist --project-name=${{ secrets.CLOUDFLARE_PAGES_PROJECT }}
+
+      # ============================================
+      # NOTION SYNC (Update JAIOS Command Center)
+      # ============================================
+      - name: Sync deployment status to Notion
+        run: |
+          echo "Deployment completed. Triggering Notion sync..."
+          # Future: Call script from jenr8ed-deploy-kit/notion/
+          # node scripts/sync-notion.js --project="${{ github.repository }}" --url="https://vercel.com/..." --status=success
+        # env:
+        #   NOTION_API_KEY: ${{ secrets.NOTION_API_KEY }}
+        #   NOTION_DATABASE_ID: ${{ secrets.NOTION_JAIOS_COMMAND_CENTER_ID }}
+
+  notify:
+    name: Notify (Optional)
+    needs: deploy
+    if: always() && github.event_name == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deployment Summary
+        run: |
+          echo "✅ JAIOS Universal Deploy completed for ${{ github.repository }}"
+          echo "Platform: Vercel (primary)"
+          echo "Commit: ${{ github.sha }}"
+          echo "Branch: ${{ github.ref }}"

@@ -1,108 +1,79 @@
 # Cloudflare Account Consolidation Checklist
 
-**Goal**: Migrate all important resources from Account 2 (`Jen-is-a-genius@outlook.com`) into Account 1 (`Jen.mckinley@gmail.com`) and safely decommission Account 2.
+**Goal**: Migrate all important resources from Account 2 into Account 1 and safely decommission Account 2.
+
+**Status as of 2026-07-14**: Planning complete. Workflow and DNS guides ready. Ready to start Phase 2.
 
 **Primary Account**: `Jen.mckinley@gmail.com` (via GitHub JenR8ed)
-**Secondary Account**: `Jen-is-a-genius@outlook.com` (Account ID: `c7111de3f7a275850964d977af2668c7`)
+**Secondary Account**: `Jen-is-a-genius@outlook.com`
 
 ---
 
-## Phase 1: Preparation
+## Phase 1: Preparation [IN PROGRESS]
 
-- [ ] Log into both Cloudflare accounts
-- [ ] Take screenshots of all resources in Account 2
-- [ ] Export code for Workers in Account 2:
-  - [ ] `agentic-inbox-deployed`
-  - [ ] `link-redirector`
-- [ ] Create new API Token in Account 1 with scopes:
-  - [ ] Zone:Edit
-  - [ ] Page:Edit
-  - [ ] Worker Scripts:Edit
-  - [ ] Account Settings:Read
-- [ ] Add new Cloudflare API token to GitHub repository secrets
-- [ ] Document all current custom domains and routes in Account 2
+- [x] Log into both Cloudflare accounts
+- [x] Take screenshots of resources in Account 2
+- [ ] Export Workers code from Account 2
+- [ ] Create new API Token in Account 1
+- [ ] Add new token to GitHub Secrets
+- [ ] Document current custom domains
 
 ---
 
-## Phase 2: Migrate Main Application (AI-Agentic-Terminal-Portfolio)
+## Phase 2: Migrate Main App (AI-Agentic-Terminal-Portfolio) [READY TO START]
 
-- [ ] In Account 1, create new Cloudflare Pages project
-- [ ] Connect GitHub repo: `JenR8ed/AI-Agentic-Terminal-Portfolio`
-- [ ] Configure build settings:
-  - Build command: `npm run build`
-  - Output directory: `dist`
-  - Framework: Vite
-- [ ] Deploy and verify it works
+- [ ] Create new Cloudflare Pages project in Account 1
+- [ ] Connect GitHub repo `JenR8ed/AI-Agentic-Terminal-Portfolio`
+- [ ] Configure Vite build settings
+- [ ] Deploy and test
 - [ ] Add custom domain `ai-agentic-terminal-portfolio.pages.dev`
-- [ ] Update GitHub Actions workflow to use Cloudflare Pages deployment
-- [ ] Test deployment from GitHub Actions
-- [ ] Verify the app works at the new URL
+- [ ] Update GitHub Actions with new workflow
+- [ ] Test deployment from GitHub
 
 ---
 
-## Phase 3: Migrate Other Pages Project
+## Phase 3: Migrate Other Pages
 
 - [ ] Migrate `jenr8ed-littlelink` (if keeping)
-- [ ] Follow same process as Phase 2
 
 ---
 
 ## Phase 4: Migrate Workers
 
-- [ ] Create new Workers in Account 1 with clearer names:
-  - [ ] `jaios-inbox`
-  - [ ] `jaios-link-redirector`
-- [ ] Upload exported code
-- [ ] Recreate environment variables and secrets
-- [ ] Deploy and test functionality
-- [ ] Update any routes/custom domains pointing to old Workers
+- [ ] Create `jaios-inbox` and `jaios-link-redirector` in Account 1
+- [ ] Upload code and deploy
 
 ---
 
-## Phase 5: Update DNS in Account 1
+## Phase 5: Update DNS (Account 1)
 
-- [ ] Add/Update DNS records in `jenr8ed.live` zone:
-  - [ ] `app` → new Pages project
-  - [ ] `link` → new Worker or Dub.co
-  - [ ] `littlelink` (optional)
-- [ ] Add Page Rules / Redirect Rules:
-  - [ ] Force HTTPS
-  - [ ] www ↔ non-www redirect
-- [ ] Verify DNS propagation (dnschecker.org)
+- [ ] Add `app` CNAME record
+- [ ] Add `link` CNAME record
+- [ ] Configure Page Rules / Redirect Rules
 
 ---
 
 ## Phase 6: Update Automation
 
-- [ ] Update all GitHub Actions workflows to use new Cloudflare token
-- [ ] Remove old Account 2 secrets
-- [ ] Test deployments end-to-end
+- [ ] Update all GitHub Actions to use Account 1 token
 
 ---
 
 ## Phase 7: Verification
 
-- [ ] `https://app.jenr8ed.live` loads correctly
-- [ ] All Workers are functioning
-- [ ] GitHub Actions deploy successfully
-- [ ] No broken functionality after 48 hours
+- [ ] Test `app.jenr8ed.live`
+- [ ] Verify all Workers
+- [ ] Confirm GitHub Actions work
 
 ---
 
 ## Phase 8: Decommission Account 2
 
-- [ ] Delete all Pages projects in Account 2
-- [ ] Delete all Workers in Account 2
-- [ ] Revoke all API tokens from Account 2
-- [ ] Remove payment methods
+- [ ] Delete resources in Account 2
 - [ ] Delete Account 2
 
 ---
 
-## Post-Migration
-
-- [ ] Update `handoff-universal.md` with new state
-- [ ] Update project READMEs with new deployment URLs
-- [ ] Archive this checklist
+**Next Immediate Action**: Start Phase 2 (Create new Pages project in Account 1)
 
 **Last Updated**: 2026-07-14

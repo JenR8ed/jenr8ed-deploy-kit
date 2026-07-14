@@ -1,0 +1,31 @@
+name: Update JAIOS Organization Showcase
+
+on:
+  schedule:
+    - cron: '0 9 * * *'   # Daily at 9 AM UTC
+  workflow_dispatch:
+
+jobs:
+  update-showcase:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Update showcase with latest project status
+        run: |
+          echo "This workflow can be extended to:"
+          echo "- Pull latest deployment status from Notion or GitHub API"
+          echo "- Update the JAIOS-Organization-Overview.md file"
+          echo "- Commit the changes back to the repo"
+
+      # Example future implementation:
+      # - name: Sync from Notion
+      #   run: node scripts/sync-showcase.js
+
+      - name: Commit changes (if any)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m "chore: auto-update JAIOS showcase"
+          git push
